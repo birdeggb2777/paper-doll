@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<meta charset="UTF-8">
+
+<body>
+  <canvas id="canvas" width="256" height="256">
+  <img id="greenEyes" class="eye" src="綠眼睛.png" width="256" height="256" style="display:none"></canvas>
+  <img id="yellowEyes" class="eye" src="黃眼睛.png" width="256" height="256" style="display:none"></canvas>
+  <img id="blueEyes" class="eye" src="青眼睛.png" width="256" height="256" style="display:none"></canvas>
+
+  <img id="brownhair" class="hair" src="咖啡頭髮.png" width="256" height="256" style="display:none"></canvas>
+  <img id="yellowhair" class="hair" src="黃頭髮.png" width="256" height="256" style="display:none"></canvas>
+  <img id="bluehair" class="hair" src="青頭髮.png" width="256" height="256" style="display:none"></canvas>
+
+  <img id="neck" src="脖子.png" width="256" height="256" style="display:none"></canvas>
+  <img id="skin" src="皮膚.png" width="256" height="256" style="display:none"></canvas>
+  <img id="mouse" src="嘴巴.png" width="256" height="256" style="display:none"></canvas>
+  <button type="button" id="eyesButton">眼睛</button>
+  <button type="button" id="hairButton">頭髮</button>
+    <script>
+    document.getElementById("eyesButton").onclick=function() {
+      eyes+=1;
+      if (eyes>2)eyes=0;
+      restart();
+    };
+     document.getElementById("hairButton").onclick=function() {
+       hair+=1;
+      if (hair>2)hair=0;
+      restart();
+    };
+    var eyes=0;
+    var hair=0;
+    function restart() {
+      var canvas = document.getElementById("canvas");
+        var ctx = canvas.getContext("2d");
+        ctx.clearRect(0,0,256,256);
+        var image = document.getElementById('neck');
+        ctx.drawImage(image, 0, 0);
+        var image = document.getElementById('mouse');
+        ctx.drawImage(image, 0, 0);
+        var image = document.getElementById('skin');
+        ctx.drawImage(image, 0, 0);
+        
+        var image = document.getElementsByClassName('hair')[hair];
+        //var image = document.getElementById('yellowhair');
+        ctx.drawImage(image, 0, 0);
+        //var image = document.getElementById('yellowEyes');
+        var image = document.getElementsByClassName('eye')[eyes];
+        ctx.drawImage(image, 0, 0);
+    }
+      window.onload=function load() {
+        restart();
+      }
+    </script>
+</body>
